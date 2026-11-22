@@ -64,6 +64,7 @@ body {
   flex-direction: column;
 }
 
+
 .banner {
   position: absolute; left: 0; right: 0; top: 0; height: 124px;
   background: var(--banner) url("../assets/banner.jpeg") center / cover no-repeat;
