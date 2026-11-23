@@ -47,6 +47,18 @@ body {
   transform: translate(-50%, -50%) rotate(-18deg);
   animation: drift 7s linear infinite;
 }
+.ascii {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+.ascii.on { opacity: 1; }
 @keyframes drift {
   from { transform: translate(-50%, -50%) rotate(-18deg) translate(0, 0); }
   to { transform: translate(-50%, -50%) rotate(-18deg) translate(72px, 72px); }
@@ -98,12 +110,7 @@ h1 {
 .goo-field { display: none; position: absolute; pointer-events: none; z-index: 1; }
 .goo-field.soft { display: block; }
 .slot .goo-field { left: -56px; right: -56px; top: -80px; bottom: -80px; z-index: auto; }
-.goo { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
-.goo circle { fill: #000; transform: scale(0); }
-.goo.shine {
-  -webkit-mask-image: radial-gradient(circle 150px at var(--gx, 50%) var(--gy, 50%), rgba(0, 0, 0, var(--ga, 0)), transparent), radial-gradient(ellipse 140px 38px at var(--lx, 50%) var(--ly, 80px), rgba(0, 0, 0, .26), transparent);
-  mask-image: radial-gradient(circle 150px at var(--gx, 50%) var(--gy, 50%), rgba(0, 0, 0, var(--ga, 0)), transparent), radial-gradient(ellipse 140px 38px at var(--lx, 50%) var(--ly, 80px), rgba(0, 0, 0, .26), transparent);
-}
+.goo-field canvas { position: absolute; left: 0; top: 0; width: 100%; height: 100%; display: block; }
 
 .label {
   position: relative; z-index: 1; height: 100%;
@@ -145,7 +152,6 @@ button.label { border: 0; margin: 0; appearance: none; -webkit-appearance: none;
 .menu .btn { height: 52px; }
 .menu .label { padding: 0 28px; font-size: 15px; gap: 10px; }
 .btn[data-origin] .label { opacity: 0; }
-.defs { position: absolute; }
 
 .loader {
   position: fixed; inset: 0; z-index: 200;
@@ -177,5 +183,5 @@ button.label { border: 0; margin: 0; appearance: none; -webkit-appearance: none;
 }
 @media (prefers-reduced-motion: reduce) {
   .bg { animation: none; }
-  .menu, .menu.open, .bars i, .loader, .loader-fill { transition: none; }
+  .menu, .menu.open, .bars i, .loader, .loader-fill, .ascii { transition: none; }
 }
